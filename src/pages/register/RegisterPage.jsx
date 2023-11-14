@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CONFIG from "../../constants/config";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -13,12 +14,15 @@ const RegisterPage = () => {
     username: "",
     password: "",
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    if(formData.password.length < 8) {
-      axios.error("La contraseña debe tener al menos 6 caracteres");
-      return;
+    if (e.target.name === "password" && e.target.value.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres");
+    } else {
+      setError("");
     }
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -28,17 +32,19 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
       const response = await axios.post(
         `${CONFIG.BASE_URL}/register`,
-
         formData
       );
       setIsLoading(false);
       navigate("/emailConfirmation");
     } catch (error) {
-      axios.error("Hubo un error al registrar:", error);
+      console.error("Hubo un error al registrar:", error);
       setIsLoading(false);
+      setError("Hubo un error al registrar. Por favor, inténtalo de nuevo.");
+      toast.error("Hubo un error al registrar. Por favor, inténtalo de nuevo.");
     }
   };
 
