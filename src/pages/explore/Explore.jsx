@@ -41,7 +41,7 @@ const Explore = () => {
   const handleSearch = (value) => {
     setUsername(value);
     const filtered = allUsers?.filter((user) =>
-      user.display.toLowerCase().includes(value.toLowerCase())
+      user.display.toLowerCase()?.includes(value.toLowerCase())
     );
     setFilteredUsers(filtered);
   };
