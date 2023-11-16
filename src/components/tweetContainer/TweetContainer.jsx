@@ -51,7 +51,7 @@ const TweetContainer = ({ tweets = [], isUserProfile }) => {
 
   const filterUniqueRetweets = (tweets) => {
     const seen = new Set();
-    return tweets?.filter((tweet) => {
+    return tweets??.filter((tweet) => {
       const currentTweet = tweet.Post || tweet; // Considera el caso del retweet
       if (tweet.Post) {
         // Si es un retweet

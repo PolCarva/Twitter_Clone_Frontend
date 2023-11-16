@@ -93,7 +93,7 @@ const Tweet = ({
     if (isUserARetweeter(retweets) && isRetweetedState) {
       setLocalRetweetCount(localRetweetCount - 1);
       setIsRetweetedState(false);
-      retweets = retweets.filter(
+      retweets = retweets???????.filter(
         (retweet) => retweet.user_id !== globalUser.id
       );
     } else {

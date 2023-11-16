@@ -71,7 +71,7 @@ const Profile = ({ socket }) => {
   const mergeAndSortByDate = (array1, array2) => {
     // Unir los dos arrays
     const combinedArray = array1
-      .filter(
+      ?.filter(
         // Filtramos los tweets que el usuario no haya retuiteado
         (post) => !array2.some((retweet) => retweet.id === post.id)
       )

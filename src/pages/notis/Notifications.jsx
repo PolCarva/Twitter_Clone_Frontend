@@ -76,7 +76,7 @@ const Notificatons = () => {
   }, [activeTab, tabs.length]);
 
   const filterNotificationsByType = (notifications, type) => {
-    return notifications.filter((noti) => noti.notification_type === type);
+    return notifications?.filter((noti) => noti.notification_type === type);
   };
 
   return (

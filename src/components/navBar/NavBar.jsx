@@ -51,7 +51,7 @@ const NavBar = () => {
 
   const token = useSelector((state) => state.token);
 
-  const unreaded = reduxNotifications.filter((item) => !item.readed).length;
+  const unreaded = reduxNotifications?.filter((item) => !item.readed).length;
 
   const [inputValue, setInputValue] = useState("");
 
