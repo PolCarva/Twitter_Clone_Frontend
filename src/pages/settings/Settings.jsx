@@ -60,9 +60,9 @@ const EditProfile = () => {
       formData.append("username", profileData.username);
       formData.append("fullName", profileData.full_name);
       formData.append("bio", profileData.bio);
-      formData.append("dayOfBirth", profileData.birth_of_day || today);
 
-      if (profilePhoto) {
+      // Solo adjuntar la foto si profilePhoto no es null y no es la imagen predeterminada
+      if (profilePhoto && profilePhoto !== "/defaultProfileImg.png") {
         formData.append("file", profilePhoto);
       }
 
@@ -76,6 +76,7 @@ const EditProfile = () => {
           },
         }
       );
+
       if (response.data.success) {
         toast.success("Usuario actualizado");
         setIsLoading(false);
@@ -88,7 +89,6 @@ const EditProfile = () => {
       console.log(e);
     }
   };
-
   const handleNameChange = (event) => {
     const { value } = event.target;
     setProfileData((prevData) => ({ ...prevData, full_name: value }));
@@ -97,11 +97,6 @@ const EditProfile = () => {
   const handleBioChange = (event) => {
     const { value } = event.target;
     setProfileData((prevData) => ({ ...prevData, bio: value }));
-  };
-
-  const handleBirthdayChange = (event) => {
-    const { value } = event.target;
-    setProfileData((prevData) => ({ ...prevData, birth_of_day: value }));
   };
 
   return (
@@ -164,15 +159,6 @@ const EditProfile = () => {
           className="ml-2 flex-1 focus:outline-none"
         />
       </div>
-
-      <input
-        type="date"
-        name="birthday"
-        value={profileData.birth_of_day || today}
-        onChange={handleBirthdayChange}
-        placeholder="Birthday"
-        className="border border-gray-300 p-2 mb-4 w-full rounded"
-      />
 
       <div className="flex items-center border border-gray-300 p-2 mb-4 w-full rounded">
         <textarea
