@@ -163,7 +163,7 @@ const Chat = ({
             </span>
             <img
               src={
-                profile_photo.includes("undefined")
+                profile_photo?.includes("undefined")
                   ? "/defaultProfileImg.png"
                   : profile_photo
               }
@@ -192,7 +192,7 @@ const Chat = ({
             isOwnMessage={message.isOwnMessage}
             text={message.text}
             profile_photo={
-              profile_photo.includes("undefined")
+              profile_photo?.includes("undefined")
                 ? "/defaultProfileImg.png"
                 : profile_photo
             }

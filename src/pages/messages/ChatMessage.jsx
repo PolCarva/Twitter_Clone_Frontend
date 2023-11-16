@@ -39,7 +39,7 @@ const ChatMessage = ({
           </div>
           <img
             src={
-              globalUser.profile_photo.includes("undefined")
+              globalUser.profile_photo?.includes("undefined")
                 ? "/defaultProfileImg.png"
                 : globalUser.profile_photo
             }
