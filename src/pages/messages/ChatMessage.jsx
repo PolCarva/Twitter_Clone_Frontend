@@ -48,7 +48,7 @@ const ChatMessage = ({
               e.target.src = "/defaultProfileImg.png";
             }}
             alt="My profile"
-            className="w-8 h-8 rounded-full order-2"
+            className="w-8 h-8 rounded-full order-2  object-cover"
           />
         </div>
       </div>

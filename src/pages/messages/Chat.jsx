@@ -163,9 +163,9 @@ const Chat = ({
             </span>
             <img
               src={
-                profile_photo?.includes("undefined")
+                (profile_photo?.includes("undefined")
                   ? "/defaultProfileImg.png"
-                  : profile_photo
+                  : profile_photo) || "/defaultProfileImg.png"
               }
               onError={(e) => {
                 console.log(e);
