@@ -68,13 +68,13 @@ const ChatMessage = ({
             </div>
           </div>
           <img
-            src={profile_photo}
+            src={profile_photo || "/defaultProfileImg.png"}
             onError={(e) => {
               console.log(e);
               e.target.src = "/defaultProfileImg.png";
             }}
             alt={user}
-            className="w-8 h-8 rounded-full order-1"
+            className="w-8 h-8 rounded-full order-1 object-cover"
           />
         </div>
       </div>
