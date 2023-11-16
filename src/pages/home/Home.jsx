@@ -24,9 +24,9 @@ const Home = () => {
         const postsArray = response.data.data[0].posts;
         const retweetsArray = response.data.data[1].retweets;
         const retweetPostIds = retweetsArray.map((retweet) => retweet.post_id);
-        const filteredPosts = postsArray.filter(
+        const filteredPosts = postsArray?.filter(
           (post) => !retweetPostIds.includes(post.id)
-        );
+        ) || [];
 
         const mergeAndSortByDate = (array1, array2) => {
           const combinedArray = [...array1, ...array2];
