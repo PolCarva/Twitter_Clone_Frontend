@@ -6,8 +6,9 @@ import {
   Route,
   Outlet,
   useNavigate,
+  Link,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./redux/store";
 import { useSelector } from "react-redux";
@@ -59,6 +60,7 @@ const Layout = () => {
     query: "(min-device-width: 768px)",
   });
 
+
   return (
     <div className="mx-auto">
       <NavBar />
@@ -89,9 +91,28 @@ const Layout = () => {
 };
 
 function App() {
+  const [isMessageOpen, setIsMessageOpen] = useState(true);
+
   return (
     <Provider store={store}>
       <div className="overflow-x-hidden">
+        <div
+          className={`w-full md:w-1/4 h-fit text-white fixed bottom-0 md:bottom-2 left-0 md:left-2 rounded-md bg-red-500 ${
+            isMessageOpen ? "block" : "hidden"
+          }`}
+        >
+          <div className="relative  p-5">
+            <button
+              className="absolute top-1 right-3"
+              onClick={() => setIsMessageOpen(false)}
+            >
+              x
+            </button>
+            La base de datos no está activa debido a la falta de presupuesto. Si
+            quieres ver el proyecto, contacta a:<br />
+            <a href="https://www.linkedin.com/in/pablo-carvalho-gimenez/" target="_blank">@pablo-carvalho-gimenez</a>
+          </div>
+        </div>
         <SocketProvider socket={socket}>
           <Toaster />
 
